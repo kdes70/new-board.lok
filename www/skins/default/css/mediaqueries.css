@@ -1,0 +1,60 @@
+/* IE10+ VIEWPORT FIX */
+@-ms-viewport{width: device-width;}
+@viewport{width: device-width;}
+
+@media (min-width: 768px) and (max-width: 979px) {
+#banner_1{
+    margin: 10px auto;
+}
+#logo{
+
+    width: 200px;
+    height: 90px;
+    margin-top: -10px;
+    margin-left: 25px;
+     -moz-background-size:cover;
+  -webkit-background-size:cover;
+  background-size:cover;
+}
+
+
+
+}
+
+/* PHONE - 767px */
+@media (max-width: 767px) {
+#logo{
+
+    width: 168px;
+    height: 80px;
+    margin-top: -90px;
+    margin-left: 25px;
+     -moz-background-size:cover;
+  -webkit-background-size:cover;
+  background-size:cover;
+}
+#left_block{
+    float: left;
+    width: 30%;
+}
+#container{
+    width: 70%;
+    float: left;
+}
+#right_block{
+    width: 100%;
+}
+
+}
+@media (max-width: 480px) {
+#left_block,#container,#right_block{
+    float: none;
+    width: 100%;
+}
+}
+
+
+@media (max-width: 320px) and (min-width: 320px){
+
+
+}

@@ -1,0 +1,694 @@
+/* = Сброс отступов для всех элементов */
+* { margin: 0; padding: 0 }
+
+/* = Убираем маркировку списков */
+ul, ol { list-style: none }
+
+/* = Работаем с таблицами: убираем удвоение рамок ячеек и расстояние между ячейками */
+table { border-collapse: collapse; border-spacing: 0 }
+
+/* = Ссылки */
+a { text-decoration: none; color: #323232 }
+#full_text > a[href]{
+	color:red;
+	text-decoration: underline;
+}
+
+/* = Убираем рамку для изображений */
+img { border: none; max-width: 100%; height: auto; }
+
+article, aside, figure, footer, header, hgroup, nav, section {display: block;}
+
+hr{
+	margin: 10px auto;
+}
+
+*{
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+html{
+	font-family:Tahoma, Verdana, Helvetica, Geneva, sans-serif !important;
+	-webkit-font-smoothing:antialiased; 
+	text-rendering: optimizeSpeed;
+}
+
+
+body{
+	
+	color: #3E4156;
+	font-weight: 800;
+
+		
+}
+/* = Убираем обводку при клике на элементы форм и др. */
+:focus { outline: 0 }
+
+/* = Сбрасываем выравнивание после плавающих элементов */
+.clear { clear: both; height: 1px; margin-top: -1px }
+.smoll_font{
+	font-size: 14px;
+	font-weight: 600;
+}
+
+div.error {
+	text-align: center;
+	background: #F9B991;
+	padding: 15px;
+	margin: 10px;
+	border: 3px solid red;
+}
+
+
+#wrapper{
+	max-width: 1280px;
+	width: 95%;
+	min-height: 100%;
+	margin: 0 auto;
+
+}
+/* =============HEADER===============*/
+#header{
+	width: 100%;
+
+}
+#logo{
+    width: 300px;
+    height: 130px;
+    margin-top: -48px;
+	margin-left: 15px;
+    display: block;
+    background-image:url("../images/logo.png") ;
+    float: left;
+}
+
+#banner_1{
+	height: 90px;
+	width: 970px;
+	margin: 10px 300px 10px ;
+
+	outline: 1px solid #FBCA0B;
+}
+
+/*================LEFT-BLOCK================*/
+
+#left_block{
+	width: 17%;
+	min-height: 400px;
+	float: left;
+	padding: 5px;
+	/*background-color: rgba(138, 197, 236, 0.38);*/
+
+}
+.left_moduls{
+	width: 100%;
+	min-height: 300px;
+
+
+}
+.left_mod_header{
+	height: 40px;
+	text-align: center;
+	color: #fff;
+	line-height: 40px;
+	background-color: #029BDC;
+}
+
+.cat-img{
+	position: absolute;
+	margin-left: -33px;
+	margin-top: -3px;
+}
+.cat-arr{
+	margin-left: 5px;
+}
+#block-category{
+	width: 100%;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+		#block-category ul li{
+			border-bottom: 1px solid #efefef;
+		}
+			#block-category ul li a{
+				font: 16px sans-serif;
+				padding: 6px 33px 6px;
+				display: block;
+				cursor: pointer;
+			}
+			#block-category  ul li a:hover{
+				background-color: #eeeeee;
+			}
+			#block-category ul li a.active{
+				background-color: #eeeeee;
+			}
+	.category-section{
+		margin-left: 25px;
+		margin-bottom: 5px;
+		display: none;
+
+	}
+		.category-section li{
+			margin-top: 3px;
+		}
+			.category-section a{
+				font: 15px sans-serif
+			}
+			.category-section a:hover{
+				text-decoration: underline;
+			}
+
+#autch_block{
+	margin-bottom: 10px;
+}
+#autch_in{
+	cursor: pointer;
+}
+#autch_form{
+	display: none;
+	padding: 10px;
+	border: 2px solid #12BACE;
+}
+#autch_form p{
+	position: relative;
+	margin: 10px;
+}
+#login,#pass{
+	padding-left: 30px;
+}
+#autch_form input[type="text"],
+#autch_form input[type="password"],
+#autch_form input[type="submit"]{
+	width: 100%;
+	height: 30px;
+
+
+}
+#autch_form i{
+	position: absolute;
+	top: 8px;
+	left: 8px;
+}
+input#autch{
+	background-color: #12BACE;
+	border: 1px solid #12BACE ;
+	color: #fff;
+	cursor: pointer;
+	text-align: center;
+}
+.auth-loading {
+	margin: -15px 30px !important;
+	display: none;
+}
+#message-auth{
+	font: 13px;
+	margin: 0px !important;
+	text-align: center;
+	padding: 10px;
+	background-color: #fde7e7;
+	color: red;
+	display: none;
+}
+/*============ USER-OFFICE ===============*/
+#user_office{
+	padding: 10px;
+
+}
+
+#user_office li{
+	padding: 8px;
+	border-bottom: 1px solid #eeeeee;
+}
+	#user_office li:hover,
+	#user_office li:active{
+		background-color: #eeeeee;
+	}
+
+/*================CONTENT=================*/
+.line{
+	height: 20px;
+	overflow: hidden;
+	text-align: left;
+	padding: 5px;
+	padding-bottom: 0px;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 16px;
+}
+
+
+#container{
+	width: 63%;
+	min-height: 600px;
+	padding: 5px;
+	float: left;
+
+}
+/* VIP-BLOCK */
+#vip_block{
+	width: 100%;
+	height: auto;
+	/*border: 5px solid #E8340E;*/
+}
+#vip_header{
+	width: 100%;
+	height: 40px;
+	color: #fff;
+	text-align: center;
+	line-height: 30px;
+	background-color: #FC575E;
+}
+.vip-grid {
+	overflow: hidden;
+	padding-top: 10px;
+}
+.vip_post:nth-child(3n+1){
+	margin-left: 0;
+}
+.vip_post:nth-child(3n+3){
+	margin-right: 0;
+}
+.vip_post{
+	/* min-width: 139px; */
+	max-width: 256.3px;
+	width: 32.2%;
+	height: 340px;
+	margin: 0.800%;				/* 796px / 5px */
+	float: left;
+	background-color: #eeeeee;
+	border: 1px solid #DBDBDB;
+	/*outline: 2px solid #E8340E;*/
+}
+.vip_post i{
+	color: #3E4156;
+	margin-right: 3px;
+	/*background-color: #FACB3E;*/
+}
+.vip_post a{
+	width: 100%;
+	height: 255px;
+	display: block;
+	overflow: hidden;
+	/* background-color: #fff; */
+}
+.vip_post img{
+	float: left;
+	margin: 0 auto;
+}
+
+/* ------- FREE BLOCK-------*/
+#free_block{
+	width: 100%;
+	height: 800px;
+	margin-top: 10px;
+	/*border: 5px solid #00BD00;*/
+}
+#free_header, #main_header{
+	width: 100%;
+	height: 40px;
+	color: #fff;
+	text-align: center;
+	line-height: 40px;
+	background-color: #67B23A;
+}
+
+.free_post{
+	max-width: 155.3px;
+	/* width: 32.2%; */
+	height: 250px;
+	margin: 0.800%;
+	float: left;
+	background-color: #eeeeee;
+	border: 1px solid #DBDBDB;
+}
+.vip_post a{
+	width: 100%;
+	height: 250px;
+	display: block;
+	overflow: hidden;
+	/* background-color: #fff; */
+}
+#main_block{
+	width: 100%;
+	min-height: 800px;
+	outline: 1px solid red;
+}
+
+/*===============FULL-POST=================*/
+#author_block{
+	width: 100%;
+	height: 150px;
+
+}
+#author_block img{
+	margin-right: 10px;
+	float: left;
+}
+#author_info,#post_info{
+	width: 39%;
+	height: 150px;
+	float: left;
+	padding: 10px;
+
+}
+#author_info p, #post_info p{
+	margin-bottom: 10px;
+}
+#submit_ls{
+
+	padding: 7px;
+	text-align: center;
+	background-color: #F4B700;
+}
+#submit_ls a{
+	color: #fff;
+	width: 200px;
+	height: 30px;
+}
+#full_post{
+	margin-top: 40px;
+}
+#full_post h3{
+	text-align: center;
+}
+#full_text{
+	width: 90%;
+	margin: 20px auto;
+
+}
+/*===============FULL-POST END=================*/
+/*=============== ADD BLOCK ===================*/
+#add_adv label span{
+	color: red;
+	margin-right: 5px;
+}
+.fl_left{
+	float: left;
+}
+.fl_right{
+	float: right;
+}
+.fl_left, .fl_right{
+	width: 50%;
+	height: auto;
+	margin-bottom: 20px;
+
+}
+#main_block form{
+	margin: 10px;
+	font-size: 20px;
+}
+#main_block form p{
+	padding: 10px;
+}
+input#add_title{
+	width: 500px;
+	height: 40px;
+	font-size: 20px;
+	color: #3E4156;
+	padding: 3px;
+}
+input#add_price{
+	width: 370px;
+	height: 40px;
+	font-size: 20px;
+	color: #3E4156;
+	padding: 3px;
+	margin-top: 10px;
+}
+
+#main_block form select{
+	width: 370px;
+	height: 40px;
+	font-size: 20px;
+	color: #3E4156;
+	padding: 3px;
+	margin-top: 10px;
+}
+#block-captcha {
+margin-top: 40px;
+}
+#block-captcha img {
+float: left;
+}
+#block-captcha > input#reg-captcha {
+height: 30px;
+width: 100px;
+font: 19px sans-serif;
+margin: 0 15px;
+float: left;
+padding-left: 5px;
+margin-top: 8px;
+color: black;
+border-left: 1px solid #ababab;
+border-top: 1px solid #ababab;
+border-right: 1px solid #dddddd;
+border-bottom: 1px solid #dddddd;
+}
+button.sub_add{
+	width: 160px;
+	height: 50px;
+	border: 0;
+	color: #fff;
+	padding: 8px;
+	float: right;
+	font-size: 20px;
+	margin-top: 15px;
+	font-weight: 800;
+	background-color: #029BDC;
+	cursor: pointer;
+}
+
+/*---- ДОБАВЛЕНИЕ ФОТО ----*/
+#images_block{
+	height: 200px;
+	width: 755px;
+	padding: 8px 0;
+	position: absolute;
+	top: 785px;
+	left: 278px;
+	/* margin: 10px auto; */
+	background-color: #EDEDED;
+	border: 3px solid #ccc;
+}
+#images_block > p {
+	text-align: center;
+	padding: 10px;
+}
+.add_photo{
+	position: relative;
+	width: 140px;
+	float: left;
+	margin-left: 8px;
+	height: 140px;
+	text-align: center;
+	border: 2px solid #ccc;
+	background-color: #fff;
+}
+.upload form{
+	padding: 0;
+	margin: 0 !important;
+}
+input.upload_photo{
+	display: block !important;
+	width: 100% !important;
+	height: 135px !important;
+	cursor: pointer;
+	opacity: 0 !important;
+	overflow: hidden !important;
+}
+.icon_add{
+	display: block;
+	font-size: 100px;
+	color: #e6e6e6;
+	position: absolute;
+	top: 0px;
+	left: 27px;
+}
+
+
+/*=============== ADD BLOCK END ===============*/
+
+/* Галерея продукта */
+.item_gallery{
+   padding: 10px 0 20px;
+   margin-bottom: 25px;
+}
+.item_img{
+   position: relative;
+   text-align: center;
+   height: 300px;
+   background: url(../images/ajax-loader.gif) no-repeat center 49%;
+}
+
+.item_img img{
+   max-width: 650px;
+}
+.item_thumbs{
+   margin-top: 50px;
+}
+.item_thumbs a{
+   margin: 0 10px 10px 0;
+}
+.item_thumbs img{
+   width: 45px;
+   padding: 4px;
+   border: 2px solid #B2B2B2;
+}
+.item_thumbs a:hover img,
+.item_thumbs a.active img{
+   border: 2px solid #666;
+}
+/* Галерея продукта */
+
+
+/*================RIGHT-BLOCK===================*/
+#right_block{
+	width: 20%;
+	min-height: 400px;
+	padding: 5px;
+	float: left;
+	outline: 1px solid blue;
+}
+
+#news_modul{
+
+}
+#news-modul_header
+{
+	width: 100%;
+	height: 40px;
+	color: #fff;
+	text-align: center;
+	line-height: 40px;
+	background-color: #F4B700;
+
+}
+#footer{
+	width: 100%;
+	height: 40px;
+	outline: 1px solid #FBCA0B;
+
+}
+/* ПОСТРАНИЧНАЯ НАВИГАЦИЯ */
+.paginator span {
+	padding: 5px;
+	margin: 5px;
+	background: #b2b2b2;
+}
+.paginator span a{
+
+	text-align: center;
+	display: inline-block;
+}
+span.IRB_paginator_active {
+color: green;
+background: #ccc;
+}
+/* МОДЕЛЬНОЕ ОКНО */
+
+#mask {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: .7;
+	filter: alpha(opacity=70);
+	z-index: 4;
+}
+#block_city {
+	display: none;
+	position: fixed;
+	z-index: 10;
+	top: 80px;
+	left: 30%;
+	/*margin-left: -400px;*/
+	width: 600px;
+	height: 340px;
+	padding: 20px 15px;
+	background-color: #fff;
+	border: 5px solid #029BDC;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	zoom: 1;
+}
+
+#block_city span{
+	cursor: pointer;
+	color: #FC575E;
+	float: left;
+}
+#block_city h3{
+	color: #777A8F;
+}
+#block_city ul{
+	padding: 20px;
+	 -webkit-column-count:3;
+    -moz-column-count:3;
+    column-count:3;
+/*ширина колонок*/
+    -moz-column-width: 150px;
+       -webkit-column-width: 150px;
+       column-width: 150px;
+/*растояние между колонок*/
+       -webkit-column-gap: 30px;
+          -moz-column-gap: 30px;
+          column-gap: 30px;
+/*Разделитель колонок*/
+            -moz-column-rule: 1px dotted #ccc;
+    -webkit-column-rule: 1px dotted #ccc;
+    column-rule: 1px dotted #ccc;
+}
+
+#block_city ul li{
+	padding: 5px;
+}
+#block_city ul li a:hover{
+	color: #00ACC5;
+}
+/*-----------------------------------------------------------------------------------------------*/
+/*                                            TOOLTIP                                            */
+/*-----------------------------------------------------------------------------------------------*/
+
+.toolTip { /* This is the hook that the jQuery script will use */
+	padding-right: 20px; /* This is need to make sure that the help icon is always visible */
+	background: transparent url(../images/help.gif) no-repeat right;
+	color: #3366FF;
+	cursor: help;
+	position: relative; /* This contains the .toolTipWrapper div that is absolutely positioned  */
+}
+
+	.toolTipWrapper { /* The wrapper holds its insides together */
+		width: 175px;
+		position: absolute; /* Absolute will make the tooltip float above other content in the page */
+		top: 20px;
+		display: none; /* It has to be displayed none so that the jQuery fadein and fadeout functions will work */
+		color: #FFF;
+		font-weight: bold;
+		font-size: 9pt; /* A font size is needed to maintain consistancy */
+	}
+
+		.toolTipTop { /* Top section of the tooltip */
+			width: 175px;
+			height: 30px;
+			background: transparent url(../images/bubbleTop.gif) no-repeat;
+		}
+
+		.toolTipMid { /* Middle section of the tooltip */
+			padding: 8px 15px;
+			background: #A1D40A url(../images/bubbleMid.gif) repeat-x top;
+		}
+
+		.toolTipBtm { /* Bottom Section of the tooltip */
+			height: 13px;
+			background: transparent url(../images/bubbleBtm.gif) no-repeat;
+		}
+
+/*=======UPLOAD========*/
+
