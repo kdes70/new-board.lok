@@ -16,7 +16,14 @@
     }
 ///////////////////////////////////////////////////////////////
 
+
     if($ok && isset($admins[$POST['value1']]) && $admins[$POST['value1']] === $POST['value2']) 
-        $_SESSION['admin'] = true;    
+        $_SESSION['admin'] = true; 
+
+    	
+    
+
+
+     
 
   

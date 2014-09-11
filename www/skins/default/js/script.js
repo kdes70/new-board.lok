@@ -1,30 +1,32 @@
 $(document).ready(function(){
 
-// Блок категорий
+/*=====Блок категорий=====*/
 	 $('#block-category > ul > li > a').click(function(){
 
-	            if ($(this).attr('class') != 'active'){
+    if ($(this).attr('class') != 'active'){
 
+	$('#block-category > ul > li > ul').slideUp(400);
+    $(this).next().slideToggle(400);
 
-				$('#block-category > ul > li > ul').slideUp(400);
-	            $(this).next().slideToggle(400);
+            $('#block-category > ul > li > a').removeClass('active');
+			$(this).addClass('active');
+            $.cookie('select_cat', $(this).attr('id'));
 
-	                    $('#block-category > ul > li > a').removeClass('active');
-						$(this).addClass('active');
-	                    $.cookie('select_cat', $(this).attr('id'));
+		}else
+        {
 
-					}else
-	                {
-
-	                    $('#block-category > ul > li > a').removeClass('active');
-	                    $('#block-category > ul > li > ul').slideUp(400);
-	                    $.cookie('select_cat', '');
-	                }
+            $('#block-category > ul > li > a').removeClass('active');
+            $('#block-category > ul > li > ul').slideUp(400);
+            $.cookie('select_cat', '');
+        }
 	});
 if ($.cookie('select_cat') != '')
 {
 $('#block-category > ul > li > #'+$.cookie('select_cat')).addClass('active').next().show();
 }
+
+
+
 
 //Блок авторизации отк-зак
 $('#autch_in').click(function(){
@@ -38,15 +40,12 @@ $('#autch_in').click(function(){
      var pass  = $("#pass").val();
      var auth  = $("#autch").val();
 
-
       if ($("#rememberme").prop('checked'))
       {
         rememberme = 'yes';
       }else{
         rememberme = '';
       }
-
-     // console.log(login+ '|' +pass+ '|' +auth+ '|'+rememberme);
 
       //Валидация логина
       if (login == "" || login.length > 30 )
@@ -57,7 +56,6 @@ $('#autch_in').click(function(){
       }else {$("#login").css("borderColor","#DBDBDB");
         send_login = 'yes';
       }
-
 
       //Валидация пароля
       if (pass == "" || pass.length > 15 )
@@ -135,6 +133,7 @@ $('#autch_in').click(function(){
 		}
 	});
 
+
  /* ===Галерея товаров=== */
     var ImgArr, ImgLen;
     //Предварительная загрузка
@@ -151,7 +150,6 @@ $('#autch_in').click(function(){
     $('.item_thumbs a').each(function(){
        Preload( $(this).attr('href') );
     })
-
 
     //обвес клика по превью
     $('.item_thumbs a').click(function(e){
@@ -171,6 +169,8 @@ $('#autch_in').click(function(){
     });
     $('.item_thumbs a:first').trigger('click');
     /* ===Галерея товаров=== */
+
+
 
 /* МОДЕЛЬНОЕ ОКНО */
 /* Находим все ссылки, которые содержат модальные окна */
@@ -201,7 +201,7 @@ $('.close').click(function(){
 
 
 
-/* ДИНАМИЧЕСКОЕ ДОБАВЛЕНИЕ ПОЛЕЙ КАРТИНОК */
+/* ДИНАМИЧЕСКОЕ ДОБАВЛЕНИЕ ПОЛЕЙ КАРТИНОК не используется */
   var max = 5;
   var min = 1;
   $("#del").attr("disabled", true);
@@ -229,7 +229,9 @@ $('.close').click(function(){
       $("#add").removeAttr("disabled");
     }
   });
+/* ДИНАМИЧЕСКОЕ ДОБАВЛЕНИЕ ПОЛЕЙ КАРТИНОК */
 
+// вывод сообщений
 //$().toastmessage('showNoticeToast', 'some message here');
 //$().toastmessage('showSuccessToast', "some message here");
 //$().toastmessage('showWarningToast', "some message here");
@@ -239,11 +241,31 @@ $('.close').click(function(){
 
 
 
-/* ДИНАМИЧЕСКОЕ ДОБАВЛЕНИЕ ПОЛЕЙ КАРТИНОК */
+ //подсчет символов
+    $(function() {
+$("input[id='add_title']").keyup(function countRemainingChars(){
+maxchars = 30;
+number = $("input[id='add_title']").val().length;
+if(number <= maxchars){
+$("#text_count").html(maxchars-number);
+}
+if(number == maxchars) {
+$("#add_title").attr({ maxlength: maxchars});
+}
+});
+});
 
 
+/*НАСТРОЙКА BBcoda РЕДАКТОРА*/
 
-/* UPLOAD IFRAME*/
+  //Init WysiBB BBCode editor
+
+ var wbbOpt = {
+        lang :   "ru",
+        buttons: "bold,italic,underline,|,img,smilebox,link,|,bullist,numlist,justifyleft,justifycenter,justifyright,|,fontcolor,fontsize,|,removeFormat"
+    }
+    $("#editor").wysibb(wbbOpt);
+
 
 
 

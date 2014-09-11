@@ -25,7 +25,7 @@
 /**
 *
 */
-class GeoCity extends Geo
+ class GeoCity extends Geo
 {
     protected $region; // указываем ID регеона
 
@@ -38,7 +38,7 @@ class GeoCity extends Geo
     protected $city_name_en; // Поле таблицы с названием городов на english
 
 
-    public $citys_arr = array();
+  //	public $citys_arr = array();
 
     public$city_en = array();
 
@@ -86,6 +86,16 @@ class GeoCity extends Geo
         }
     return $arr;
 
+    }
+
+  public function getIdcity($id)
+    {
+    	foreach ($this->createArrayCitys() as $arr) 
+    	{
+    	     if ($arr['city_name_en'] === $id)
+    	       return $arr['id'];
+    	}
+    	  return false;
     }
 }
 

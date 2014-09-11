@@ -35,7 +35,7 @@
 * Подключаем файлы ядра 
 */     
     include '../config.php';
-    include DK_ROOT .'/variables.php'; 
+    include DK_ROOT .'/variables_adm.php'; 
     include DK_ROOT .'/language/ru.php';
     include DK_ROOT .'/libs/mysql.php';    
     include DK_ROOT .'/libs/default.php';    
@@ -55,9 +55,9 @@
 /** 
 * Подключаем главный шаблон 
 */     
-    include DK_ROOT .'/skins/tpl/admin/index.tpl';
+    include DK_ROOT . TEMPLATE . '/tpl/admin/index.tpl';
     
-echo '<br /><br /><br />';
-echo 'Время генерации страницы: '. sprintf("%01.4f", microtime(true) - $start) .'<br />';
-echo 'Количество подключённых файлов: '. count(get_included_files()) .'<br />';
-echo 'Количество запросов: '. DB::$count .'<br />';
+// echo '<br /><br /><br />';
+// echo 'Время генерации страницы: '. sprintf("%01.4f", microtime(true) - $start) .'<br />';
+// echo 'Количество подключённых файлов: '. count(get_included_files()) .'<br />';
+// echo 'Количество запросов: '. DB::$count .'<br />';

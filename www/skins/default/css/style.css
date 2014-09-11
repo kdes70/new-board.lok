@@ -464,15 +464,21 @@ button.sub_add{
 
 /*---- ДОБАВЛЕНИЕ ФОТО ----*/
 #images_block{
-	height: 200px;
+	height: 163px;
 	width: 755px;
 	padding: 8px 0;
 	position: absolute;
-	top: 785px;
+	top: 800px;
 	left: 278px;
 	/* margin: 10px auto; */
 	background-color: #EDEDED;
 	border: 3px solid #ccc;
+}
+.upload:hover{
+	background-color: #b6b6b6;
+}
+.icon_add:hover{
+	color: #fff;
 }
 #images_block > p {
 	text-align: center;
@@ -508,7 +514,10 @@ input.upload_photo{
 	top: 0px;
 	left: 27px;
 }
-
+span#text_count {
+float: right;
+margin-top: 6px;
+}
 
 /*=============== ADD BLOCK END ===============*/
 

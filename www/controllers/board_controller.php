@@ -21,7 +21,7 @@
 /////////////////////////////////////////////////////////
 
     //$board = new Board_Model('bord', $GET['num'], $GET['id_city']);
-$adv = new Board_Model('advert', $GET['num'], $GET['city']);
+$adv = new Board_Model('advert', $GET['num'], $GET['city'], $city_id);
 
 /**-----------------------------------------------------------------------
  *                Вывод параметров
@@ -49,16 +49,6 @@ $adv = new Board_Model('advert', $GET['num'], $GET['city']);
 
 
 
-
-        if($_POST['id']){
-
-       	 $adv->upFilesImg();
-       	 exit();
-        	
-
-        }
-
-
 // Запись нового обьявления по нажатию на кнопку
    if($ok)
    {
@@ -78,9 +68,15 @@ $adv = new Board_Model('advert', $GET['num'], $GET['city']);
            // Если нет ID то записываем как нового гостя и создаем ему куку
             $id_user = Look::insertNewGuest($POST['value8']);
         }
-
     }
-   /* if($id_user)
+    if(isset($POST['array1']))
+    {
+    	 $POST['array1'] = array_filter($POST['array1']);
+         $img = implode("|", $POST['array1']);
+       
+    }
+    
+    if($id_user)
     {
          //Отпровляем данные в базу
                  if($adv->addAdvert($POST['value1'], //title,
@@ -91,20 +87,24 @@ $adv = new Board_Model('advert', $GET['num'], $GET['city']);
                                      $POST['value6'], //type,
                                      $POST['value7'], //phone
                                      $POST['value8'], //email
-                                     $id_user         //author,
-                                     //photo
+                                     $id_user,         //author,
+                                     $img
                                      )
                      )
                       reDirect('page=board') ;
 
-    }*/
+    }
+
+
 
    }
-// unset($_SESSION);
+
         include DK_ROOT . TEMPLATE .'tpl/board/add_form.tpl';
+
         break;
 
-        case 'add_advert_vip':
+     /*   case 'add_advert_vip':
+
        if(Look::check())
        {
 
@@ -116,7 +116,7 @@ $adv = new Board_Model('advert', $GET['num'], $GET['city']);
 
 
             break;
-
+*/
 
     case 'read':
         // Вывод VIP
@@ -133,51 +133,36 @@ $adv = new Board_Model('advert', $GET['num'], $GET['city']);
         include DK_ROOT . TEMPLATE .'tpl/board/show.tpl';
 
         break;
+
     case 'category':
 
-        $info[] = $adv->creareCatBoard($GET['parent'], 8);
+        $info[] = $adv->creareCatBoard($GET['parent'], 6, true);
         $vip_rows = $adv->createRows('board/vip_row', 'advert');
+        $page_menu = $adv->menu;
+        $adv_count = $adv->count;
+
+        $info1[] = $adv->creareCatBoard($GET['parent'], 10);
+        $free_rows = $adv->createRows('board/free_row', 'advert');
         $page_menu = $adv->menu;
         $adv_count = $adv->count;
 
          include DK_ROOT . TEMPLATE .'tpl/board/show.tpl';
         break;
+
     case 'advert':
 $adv->clear = TRUE;
-        $adv->creareFull($GET['parent']);
+         $info[] = $adv->creareFull($GET['parent']);
+        $rows = $adv->createRows('board/full', 'board');
+       // print_r($info);
 
-        $rows = $adv->createRows('board/advert', 'board');
-
-        include DK_ROOT . TEMPLATE .'tpl/board/show.tpl';
+        include DK_ROOT . TEMPLATE .'tpl/board/advert.tpl';
         break;
+
+
     case 'test':
 
+		include DK_ROOT . TEMPLATE .'tpl/board/test.tpl';
 
-
-
-
-  include DK_ROOT . TEMPLATE .'tpl/board/test.tpl';
-
-  if($_FILES['upload'])
-  {
-  	$uploaddir = DK_ROOT.'/photo/advert/';
-$file = $uploaddir . basename($_FILES['upload']['name']); 
-if (move_uploaded_file($_FILES['upload']['tmp_name'], $file)) {exit("1_". md5($_FILES['upload']['name'])) ;}
- else {echo "error";}
-  }
-
-
-	
-
-
-
-
-    // if($ok)
-    // {
-    //  $info[] = $adv->UploadImgFiles($_FILES['gallery_file'], 2);
-    // }
-
-       
         break;
 
     default:

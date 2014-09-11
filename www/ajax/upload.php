@@ -12,51 +12,78 @@
 
 
 
-//print('$_POST:' . print_r($_POST, 1) . ' $_FILES:' . print_r($_FILES, 1));
+    $dir_dest = DK_ROOT.'/photo/temp/';
+    $dir_dest1 = DK_ROOT.'/photo/temp/crop/';
+    //$info = array();
+    //$files = array();
+    $max_size = DK_CONFIG_MAX_SIZE_IMG; // Мак. размер файла 1024*50
+    $name = 'diboard-img';        // Имя большой картинки
+
+     include DK_ROOT .'/libs/class.upload.php';
+   // $smoll_name = 
+
+
+    $handle = new Upload($_FILES['upload'], 'ru_RU');
+    if ($handle->uploaded){
+       			
+                # разрешаем к загрузке только картинки(проверка MIME-type)
+                $handle->allowed            = array('image/*');
+                # не больше 2 Мб
+                $handle->file_max_size      =  $max_size;
+    			# указываем переименовывать файлы если есть с таким именем
+                # чтоб можно было загрузить несколько юзерпиков
+                # (вконце будут добавлятся цифры)
+                $handle->file_auto_rename   = true;
+                $handle->file_new_name_body = $name;
+                # конвертим в jpg
+                $handle->image_convert      = 'jpg';
+                $handle->jpeg_quality       = 80;
+                $handle->image_resize        = true;
+                $handle->image_x             = 500;
+                $handle->image_y             = 500;
+                $handle->image_ratio         = true;
+             // $handle->image_resize       = true;
+                //$handle->image_x            = 600;
+             // $handle->image_ratio_y      = true;
+                $handle->image_ratio_no_zoom_in  = true;
+                $handle->image_watermark    = DK_ROOT . TEMPLATE ."/images/watermark.png";
+                $handle->image_watermark_x  = 10;
+                $handle->image_watermark_y  = 10;
 
 
 
-$uploaddir = DK_ROOT.'/photo/advert/';
-if(!is_dir($uploaddir)) mkdir($uploaddir) ; 
-$file = $uploaddir . basename($_FILES['upload']['name']); 
-if (move_uploaded_file($_FILES['upload']['tmp_name'], $file)) {echo 'yas__'.$_FILES['upload']['name'].'__'.$_POST['date'].'__'.$_POST['photo_1'];}
- else {echo 0;}
-	
+            $handle->Process($dir_dest);//ресайз ширина 600
 
-	/*$file = $_FILES['userfile']['name'];
-	$path = DK_CONFIG_UPLOAD_PATH;
-	$max_size = DK_CONFIG_MAX_SIZE_IMG;
-	$ext = strtolower(preg_replace("#.+\.([a-z]+)$#i", "$1", $file)); // расширение картинки
-    $types = array("image/gif", "image/png", "image/jpeg", "image/pjpeg", "image/x-png"); // массив допустимых расширений
+                $handle->file_auto_rename   = true;
+                $handle->file_new_name_body = $name ;
+                # разрешаем к загрузке только картинки(проверка MIME-type)
+                $handle->allowed            = array('image/*');
+                # не больше 2 Мб
+                $handle->file_max_size      = $max_size;
+                # конвертим в jpg
+                $handle->image_convert      = 'jpg';
+                $handle->jpeg_quality       = 80;
+                $handle->image_resize       = true;
+                $handle->image_ratio_crop   = true;
+                $handle->image_y            = 140;
+                $handle->image_x            = 140;
+
+    $handle->Process($dir_dest1);// обрезаем превью
+
     
-    	if($_FILES['userfile']['size'] > $max_size)
-        {
-        	$res = array("answer" => "Максимальный размер файла ".$max_size." Мб!");
-        	exit(json_encode($res));
-        }
-        if($_FILES['userfile']['error'])
-        {
-        	$res = array("answer" => "Ошибка загруски, возможно фаил слишком большой ".$max_size);
-        	exit(json_encode($res));
-        }
-         else
-         {
-         	$res = array("answer" => "OK");
-        	exit(json_encode($res));
-         }
-        	
+	    if ($handle->processed)
+	     {
+	         echo 'yas__'.$handle->file_dst_name;
+	         
+	         $handle->Clean();
+	    }
+	    else
+	    {  // one error occured
+	       echo $handle->error;
+	       $handle->Clean();
 
-*/
-
-
-
-
-
-
-
-
-
-
-
+	    }
+    }
+   
 
  ?>

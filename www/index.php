@@ -45,10 +45,14 @@
     include DK_ROOT .'/libs/view.php';
     include DK_ROOT .'/libs/get_city.php';
         include DK_ROOT .'/libs/Protect_model.php';
+        include DK_ROOT .'/libs/validation_class.php';
+
+       // $oo = new Validation();
+
 
 	//include DK_ROOT .'/libs/online.php';
    // include DK_ROOT .'/libs/img_UploadMass.php';
-    include DK_ROOT .'/libs/class.upload.php';
+//    include DK_ROOT .'/libs/class.upload.php';
 
  //Авторизация
     if($autch)
@@ -77,7 +81,10 @@ $region = 1672;//Томская область
 
  $citys_arr = $myCity->citys_arr;
 
-// print_arr($citys_arr); 
+ $city_id = $myCity->getIdcity($GET['city']);
+ //$b = GeoCity :: getIdcity($GET['city'], $citys_arr);
+
+ //print_arr($citys_arr); 
 
 
 /**
@@ -119,6 +126,15 @@ $region = 1672;//Томская область
             include DK_ROOT .'/controllers/users_controller.php';
 
         break;
+
+        case 'profile' :
+
+			include DK_ROOT .'/controllers/left_sitebar_controller.php';
+            include DK_ROOT .'/controllers/right_bar_controller.php';
+            include DK_ROOT .'/controllers/profile_controller.php';
+
+        break;
+
 
         case 'board' :
         

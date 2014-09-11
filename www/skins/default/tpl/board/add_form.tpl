@@ -8,8 +8,8 @@
                 <form id="add_adv"  method="POST" enctype="multipart/form-data">
                 <p>
                 <label for="add_title"><span>*</span>Ведите загаловок:</label>
-                    <input type="text" name="form[value1]" id="add_title" value="<?=$_SESSION['add_adv']['title']; ?>">
-                    <span id="text_count">50</span>
+                    <input type="text" maxlength="30" name="form[value1]" id="add_title" value="<?=$_SESSION['add_adv']['title']; ?>" required>
+                    <span id="text_count">30</span>
                 </p>
                 <hr>
                 <div class="fl_left">
@@ -51,26 +51,13 @@
                     </select>
                 </p>
                 </div>
-                <p style="margin-bottom: 240px">
+                <p >
                 <label for="editor"><span>*</span>Текст объявления:</label><br/>
-                    <textarea id="editor" name="form[value4]" cols="90" rows="15"><?php echo $_SESSION['add_adv']['text']; ?></textarea>
+                    <textarea id="editor" name="form[value4]" cols="90" rows="15"><?php echo $_SESSION['add_adv']['text']; ?></textarea >
                 </p>
-
-               
-
-              <!--   <p>
-                    <label for="main_file"><span>*</span>Главное фото</label><br>
-                    <input type="file" name="file" id="main_file" >
+                <p style="margin-bottom: 240px">
+                	<label>Фото</label>
                 </p>
-                <p id="block_file">
-                    <label for="main_file">Галлерея фото</label><br>
-                    <div><input  type="file" name="gallery_file[]" ></div>
-                </p>
-                <p>
-                    <input type="button" id="add" value="Добавить поле" />
-                    <input type="button" id="del" value="Удалить поле" />
-                </p> -->
-
 
 <div class="clear"></div>
                 
@@ -103,7 +90,7 @@
          <div class="fl_left">
             <p>
                 <label for=""><span>*</span>Телефон</label>
-                <input type="tel" name="form[value7]" id="add_price" maxlength="11"  onkeyup="this.value = this.value.replace (/\D/, '')"
+                <input type="tel" required name="form[value7]" id="add_price" maxlength="11"  onkeyup="this.value = this.value.replace (/\D/, '')"
                 pattern"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" value="<?php echo $_SESSION['userdata']['phone']; ?>">
             </p>
          </div>
@@ -111,7 +98,7 @@
          <?php if(!isset($_SESSION['userdata'])): ?>
             <p>
                 <label for=""><span>*</span>Email <span class="toolTip" title="Заполните поле Email для добавления объявления не зарегистрированных пользователей">&nbsp;</span></label>
-                <input type="email" name="form[value8]" id="add_price" value="<?php echo $_SESSION['userdata']['email']; ?>"  ><span class="tooltip"></span>
+                <input type="email" required name="form[value8]" id="add_price" value="<?php echo $_SESSION['userdata']['email']; ?>"  ><span class="tooltip"></span>
             </p>
         <?php endif; ?>
          </div>
@@ -123,7 +110,7 @@
 <div id="block-captcha">
 
 <img src="<?php echo DK_HOST; ?>components/captcha/reg_captcha.php" />
-<input type="text" name="reg_captcha" id="reg-captcha"  />
+<input type="text"required name="reg_captcha" id="reg-captcha"  />
 
 <p id="reloadcaptcha"><i class="fa fa-refresh"></i></p>
 </div>
@@ -139,20 +126,18 @@
    <div class="clear"></div>
    <div id="hidden_inputs">
 		
-		<input id="hidden_date" type="hidden" name="post_date" value="19-08-14" />
-		<input id="hidden_photo_1" class="validate_photo1" type="hidden" name="photo_1" />
-		<input id="hidden_photo_2" class="validate_photo2" type="hidden" name="photo_2" />
-		<input id="hidden_photo_3" class="validate_photo3" type="hidden" name="photo_3" />
-		<input id="hidden_photo_4" class="validate_photo4" type="hidden" name="photo_4" />
-		<input id="hidden_photo_5" class="validate_photo5" type="hidden" name="photo_5" />
+		<input id="hidden_date" type="hidden" name="post_date" value="<?php echo date("d-m-Y"); ?>" />
+		<input id="hidden_photo_1" class="validate_photo1" type="hidden" name="form[array1][photo_1]" />
+		<input id="hidden_photo_2" class="validate_photo2" type="hidden" name="form[array1][photo_2]" />
+		<input id="hidden_photo_3" class="validate_photo3" type="hidden" name="form[array1][photo_3]" />
+		<input id="hidden_photo_4" class="validate_photo4" type="hidden" name="form[array1][photo_4]" />
+		<input id="hidden_photo_5" class="validate_photo5" type="hidden" name="form[array1][photo_5]" />
 	</div>
 
                 </form>
 
                 <div id="images_block">
- <p>
-                	<label>Фото</label>
-                </p>
+ 
 <!--  -->
 <div id="add_photo_1" class="add_photo" >
 	<div id="plus_photo_1" class="icon_add">
@@ -162,7 +147,7 @@
 			
 			<form id="upload_photo_1" method="post" enctype="multipart/form-data" action="/ajax/upload.php" target="frame_photo_1">
 				<input type="hidden" name="date" value="29-07-14" />
-				<input id="input_upload_photo_1" class="upload_photo" type="file" name="upload"/>
+				<input id="input_upload_photo_1" accept="image/*" class="upload_photo" type="file" name="upload"/>
 
 			</form>
 			<iframe style="display: none;" id="frame_photo_1" name="frame_photo_1"></iframe>
@@ -177,7 +162,7 @@
 			<iframe style="display: none;" id="frame_photo_2" name="frame_photo_2"></iframe>
 			<form id="upload_photo_2" method="post" enctype="multipart/form-data" action="/ajax/upload.php" target="frame_photo_2">
 				<input type="hidden" name="date" value="29-07-14" />
-			<input id="input_upload_photo_2" class="upload_photo" type="file" name="upload"/>
+			<input id="input_upload_photo_2" accept="image/*" class="upload_photo" type="file" name="upload"/>
 			</form>
 		</div>  
 </div>
@@ -190,7 +175,7 @@
 			<iframe style="display: none;" id="frame_photo_3" name="frame_photo_3"></iframe>
 			<form id="upload_photo_3" method="post" enctype="multipart/form-data" action="/ajax/upload.php" target="frame_photo_3">
 				<input type="hidden" name="date" value="29-07-14" />
-			<input id="input_upload_photo_3" class="upload_photo" type="file" name="upload"/>
+			<input id="input_upload_photo_3" accept="image/*" class="upload_photo" type="file" name="upload"/>
 			</form>
 		</div>  
 </div>
@@ -203,7 +188,7 @@
 			<iframe style="display: none;" id="frame_photo_4" name="frame_photo_4"></iframe>
 			<form id="upload_photo_4" method="post" enctype="multipart/form-data" action="/ajax/upload.php" target="frame_photo_4">
 				<input type="hidden" name="date" value="29-07-14" />
-			<input id="input_upload_photo_4" class="upload_photo" type="file" name="upload"/>
+			<input id="input_upload_photo_4" accept="image/*" class="upload_photo" type="file" name="upload"/>
 			</form>
 		</div>  
 </div>
@@ -216,7 +201,7 @@
 			<iframe style="display: none;" id="frame_photo_5" name="frame_photo_5"></iframe>
 			<form id="upload_photo_5" method="post" enctype="multipart/form-data" action="/ajax/upload.php" target="frame_photo_5">
 				<input type="hidden" name="date" value="29-07-14" />
-			<input id="input_upload_photo_5" class="upload_photo" type="file" name="upload"/>
+			<input id="input_upload_photo_5" accept="image/*" class="upload_photo" type="file" name="upload"/>
 			</form>
 		</div>  
 </div>
@@ -230,36 +215,34 @@
 <?php echo dbg($_SESSION); ?>
 <?php echo dbg($_FILES); ?>
         </section>
-        <!-- Init WysiBB BBCode editor -->
+  
+
+
+
+
+
+
 <script>
     $(document).ready(function() {
 
-    var wbbOpt = {
-        lang :   "ru",
-        buttons: "bold,italic,underline,|,img,smilebox,link,|,bullist,numlist,justifyleft,justifycenter,justifyright,|,fontcolor,fontsize,|,removeFormat"
-    }
-    $("#editor").wysibb(wbbOpt);
-
-
 // Загрустка изображений
-/*	$(".delete_photo").click(function() {
+	$(".delete_photo").click(function() {
 	var id = $(this).attr("id").split("_")[2];
 	$("#hidden_photo_"+id).val('');
 	$("#add_photo_"+id).css({'opacity':'0.2'});
 	$(this).hide();
-});*/
+});
 
 
 $(".upload_photo").change(function(){
-
-
+//Полючаем ID выбраного Input
 var id = $(this).attr("id").split("_")[3];  
 
 var i = $(this).children('input'); //это импут
-var a = ['jpg', 'png', 'zip']; //массив разрешенных расширений для клиентской проверки
-var ext = $(this).val().split('.').pop();
+var a = ['jpg', 'png', 'jpeg', 'JPG']; //массив разрешенных расширений для клиентской проверки
 
-console.log(ext);
+var ext = $(this).val().split('.').pop();//Получаем расширение файла
+
 if (a.indexOf(ext) == -1){ //сама проверка расшерения
 i.parent().each(
 function(){
@@ -268,53 +251,45 @@ this.reset();
 );
 return alert('недопустимое расширение файла!');
 }
+
+// Если все хорошо отпровляем форму 
 $("#upload_photo_"+id).submit();
-
-
-
+//Загружаем ответ в Iframe
 	$("#frame_photo_"+id).load(function () {
+
                iframeContents = $("#frame_photo_"+id)[0].contentWindow.document.body.innerHTML;
+               //Если фото загружено 
                var accept = iframeContents.split("__")[0];
-              // var dd = iframeContents.split("_")[1];
-				alert(iframeContents);
-			//	alert(dd);
+            
 				if (accept == 'yas') {
+					//получаем имя файла 
 					var filename = iframeContents.split("__")[1];
 
-					//alert(filename);
+					// Прячем дефолтную заставку 
 					$("#plus_photo_"+id).hide();
-					
-					$("#add_photo_"+id).prepend('<img style="display:block; position:absolute; z-index:0; top:0px; max-width:135px; max-height:135px;" src="/photo/advert/'+filename+'" />');
-					  $("#hidden_photo_"+id).val(filename);
-					
+					// И вставляем туда картинку
+					var $img = $('#add_photo_' + id).find('img');
 
+					if ($img.length === 0)
+					{
+					    $("#add_photo_" + id).prepend('<img style="display:block; position:absolute; z-index:0; top:0px; max-width:135px; max-height:135px;" src="/photo/temp/crop/' + filename + '" />');
+					} else {
+					    $img.prop('src', '/photo/advert/crop/' + filename);
+					}
+					// Тут присвоем имя файла в скрытый Input[type=text] 
+					  $("#hidden_photo_"+id).val(filename);
+				// А если ошибка выведем ее
 				} else {
+					alert(accept);
+					//$("#upload_photo_"+id).reset();
+					
 				
 				}
            });
 
-
-
-
 });
 				
 
-  //подсчет символов
-    $(function() {
-$("input[id='add_title']").keyup(function countRemainingChars(){
-maxchars = 50;
-number = $("input[id='add_title']").val().length;
-if(number <= maxchars){
-$("#text_count").html(maxchars-number);
-}
-if(number == maxchars) {
-$("#add_title").attr({ maxlength: maxchars});
-}
-});
-});
-
-
-
-
     }); 
     </script>
+ <!-- <script type="text/javascript" src="<?php echo TEMPLATE; ?>js/validation.js"></script> -->

@@ -8,7 +8,7 @@
         </div>
         <div id="user_office">
             <ul>
-                <li><a href="">Мои обьявления</a></li>
+                <li><a href="<?php echo href('page=profile', 'mod=my_adv'); ?>">Мои обьявления</a></li>
                 <li><a href="">Витрина</a></li>
                 <li><a href="">Мои сообщения <span>+10</span></a></li>
                 <li><a href="">Настройки</a></li>
