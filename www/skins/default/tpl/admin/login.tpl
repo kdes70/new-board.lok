@@ -13,7 +13,7 @@
 				</label>
 			</p>
 			<p>
-				 <input type="submit" value="log in" name="ok" id="button" />
+				 <input type="submit" value="log in" name="ok" id="button"  />
 			</p>
 		</form>
 
@@ -24,5 +24,6 @@
 <br>
 <br>
 <br>
-<a href="<?php echo href('host'); ?>">На сайт</a>
+<a href="<?php echo href('host'); ?>"><i class="fa fa-reply"></i>
+ На сайт</a>
 </div>

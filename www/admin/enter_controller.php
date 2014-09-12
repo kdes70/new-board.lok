@@ -19,7 +19,7 @@
 
     if($ok && isset($admins[$POST['value1']]) && $admins[$POST['value1']] === $POST['value2']) 
         $_SESSION['admin'] = true; 
-
+  
     	//include DK_ROOT . TEMPLATE .'/tpl/admin/admin.tpl';  
     
 

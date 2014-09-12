@@ -11,14 +11,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
 
-	<link type="text/css" rel="stylesheet" href="<?php echo TEMPLATE; ?>css/style_adm.css" media="all" />
+	<link type="text/css" rel="stylesheet" href="<?php echo TEMPLATE; ?>css/admin/style_adm.css" media="all" />
 <!-- 	<link type="text/css" rel="stylesheet" href="<?php echo TEMPLATE; ?>css/menu.css" media="all" /> -->
 	<link type="text/css" rel="stylesheet" href="<?php echo TEMPLATE; ?>css/mediaqueries.css" media="all" />
 	<link rel="stylesheet" href="<?php echo TEMPLATE; ?>css/font-awesome/css/font-awesome.css" >
 
 	 <script type="text/javascript" src="<?php echo TEMPLATE; ?>js/jquery-1.11.0.min.js"></script>
 	 <script type="text/javascript" src="<?php echo TEMPLATE; ?>js/jquery.cookie.min.js"></script>
- 
+	<!-- адаптивное меню -->
+	
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -34,15 +35,15 @@
 	<script type="text/javascript" src="<?php echo TEMPLATE; ?>js/tooltip.js"></script>
 	
 	  <script type="text/javascript" src="<?php echo TEMPLATE; ?>mess/main/javascript/jquery.toastmessage.js"></script>
-	  <link rel="stylesheet" href="<?php echo TEMPLATE; ?>mess/main/resources/css/jquery.toastmessage.css">
+	  <link rel="stylesheet" href="<?php echo TEMPLATE; ?>mess/main/resources/css/jquery.toastmessage.css">-->
 	
-	<script type="text/javascript" src="<?php echo TEMPLATE; ?>js/script_admin.js"></script> -->
+	<script type="text/javascript" src="<?php echo TEMPLATE; ?>js/admin/script_adm.js"></script> 
 
 	<title>Админ-панель</title>
 
 </head>
 <body class="login">
-
+	
 
 
 
@@ -55,9 +56,9 @@
 
          
  <?php  include DK_ROOT . TEMPLATE . '/tpl/admin/login.tpl'; ?> 
-	<?php echo dbg($POST); ?>
-	<?php echo dbg($_SESSION); ?>
+	
   
-    <?php endif; ?>        
+    <?php endif; ?>
+  
 </body>
 </html>
