@@ -1,6 +1,10 @@
 <?php
+
 /**
-* Контроллер
+* @author B)DIMON
+* @copyright 2013
+*
+* Контроллер stats
 * @author IT studio IRBIS-team
 * @copyright © 2011 IRBIS-team
 */
@@ -14,16 +18,11 @@
        header("HTTP/1.1 404 Not Found");     
        exit(file_get_contents('../404.html'));
     }
-///////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
 
 
-    if($ok && isset($admins[$POST['value1']]) && $admins[$POST['value1']] === $POST['value2']) 
-        $_SESSION['admin'] = true; 
 
-    	//include DK_ROOT . TEMPLATE .'/tpl/admin/admin.tpl';  
-    
-
-
-     
-
-  
+      
+        include DK_ROOT . TEMPLATE . '/tpl/admin/stats/show.tpl';    
+      
+   

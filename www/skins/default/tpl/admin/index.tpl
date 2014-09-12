@@ -12,7 +12,7 @@
 	<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
 
 	<link type="text/css" rel="stylesheet" href="<?php echo TEMPLATE; ?>css/style_adm.css" media="all" />
-	<link type="text/css" rel="stylesheet" href="<?php echo TEMPLATE; ?>css/menu.css" media="all" />
+<!-- 	<link type="text/css" rel="stylesheet" href="<?php echo TEMPLATE; ?>css/menu.css" media="all" /> -->
 	<link type="text/css" rel="stylesheet" href="<?php echo TEMPLATE; ?>css/mediaqueries.css" media="all" />
 	<link rel="stylesheet" href="<?php echo TEMPLATE; ?>css/font-awesome/css/font-awesome.css" >
 
@@ -27,27 +27,37 @@
 	<!-- Load WysiBB JS and Theme -->
 	<!-- <script src="http://cdn.wysibb.com/js/jquery.wysibb.min.js"></script>
 	<link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" /> -->
-	<script src="<?php echo TEMPLATE; ?>wysibb/jquery.wysibb.min.js"></script>
+	<!-- <script src="<?php echo TEMPLATE; ?>wysibb/jquery.wysibb.min.js"></script>
 	<link rel="stylesheet" href="<?php echo TEMPLATE; ?>wysibb/theme/default/wbbtheme.css" />
 	<script src="<?php echo TEMPLATE; ?>wysibb/lang/ru.js"></script>
-
+	
 	<script type="text/javascript" src="<?php echo TEMPLATE; ?>js/tooltip.js"></script>
-
-  <script type="text/javascript" src="<?php echo TEMPLATE; ?>mess/main/javascript/jquery.toastmessage.js"></script>
-  <link rel="stylesheet" href="<?php echo TEMPLATE; ?>mess/main/resources/css/jquery.toastmessage.css">
-
-	<script type="text/javascript" src="<?php echo TEMPLATE; ?>js/script_admin.js"></script>
+	
+	  <script type="text/javascript" src="<?php echo TEMPLATE; ?>mess/main/javascript/jquery.toastmessage.js"></script>
+	  <link rel="stylesheet" href="<?php echo TEMPLATE; ?>mess/main/resources/css/jquery.toastmessage.css">
+	
+	<script type="text/javascript" src="<?php echo TEMPLATE; ?>js/script_admin.js"></script> -->
 
 	<title>Админ-панель</title>
 
 </head>
 <body class="login">
-<?php if(!isset($_SESSION['admin'])): ?>
-	<?php  include DK_ROOT . TEMPLATE . '/tpl/admin/login.tpl'; ?>
+
+
+
+
+<?php if(isset($_SESSION['admin'])): ?>
+	<!-- content start -->
+	<?php  include DK_ROOT . TEMPLATE . '/tpl/top_menu.tpl'; ?>
+	  <?php echo $content; ?> 
+	  <!-- content end -->
 <?php else: ?>
-  <!-- content start -->
-           <?php echo $content; ?>
-   <!-- content end -->
+
+         
+ <?php  include DK_ROOT . TEMPLATE . '/tpl/admin/login.tpl'; ?> 
+	<?php echo dbg($POST); ?>
+	<?php echo dbg($_SESSION); ?>
+  
     <?php endif; ?>        
 </body>
 </html>

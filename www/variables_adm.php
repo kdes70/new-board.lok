@@ -44,7 +44,7 @@
     $GET = array(
                      
                  
-                  'page'   => 'main', 
+                  'page'   => 'stats', 
                   'mod'    => 'read',
                   'parent' => 0,
                   'id'     => 0, 

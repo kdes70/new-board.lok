@@ -1,7 +1,7 @@
 <div class="login_block">
 	<p class="message">Авторезируйтесь!</p>
 	<div>
-		<form  action="" methot="post" >
+		<form action="" method="post">
 			<p>
 				<label for="login">Login <br>
 				<input class="input" type="text" name="form[value1]" id="login" maxlength="30" >
@@ -9,7 +9,7 @@
 			</p>
 			<p>
 				<label for="pass">Password <br>
-				<input class="input" type="password" name="form[value2]" id="pass" maxlength="30" >
+				<input class="input" type="text" name="form[value2]" id="pass" maxlength="30" >
 				</label>
 			</p>
 			<p>

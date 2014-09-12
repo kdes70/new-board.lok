@@ -49,7 +49,7 @@
     else
         include DK_ROOT .'/admin/enter_controller.php';
     
-
+//unset($_SESSION['admin']);
 // Заканчиваем буферизацию и помещаем вывод в переменную $content
    $content = ob_get_clean(); 
 /** 
