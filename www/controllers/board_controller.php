@@ -20,9 +20,10 @@
     }
 /////////////////////////////////////////////////////////
 
-    //$board = new Board_Model('bord', $GET['num'], $GET['id_city']);
-$adv = new Board_Model('advert', $GET['num'], $GET['city'], $city_id);
 
+$adv = new Board_Model('advert', $GET['num'], $GET['city']);
+
+//$view = new Board_View('advert', 'board/show', $GET['num'], $GET['city']);
 /**-----------------------------------------------------------------------
  *                Вывод параметров
  =========================================================================*/
@@ -36,22 +37,39 @@ $adv = new Board_Model('advert', $GET['num'], $GET['city'], $city_id);
 // Список типа объявления
    $type_select = $adv->createAdvType();
 
+/*
+switch ($GET['mod']) {
+	case 'advert':
+		
+		$view->actionFull($GET['parent']);
 
+		break;
+	
+	default:
+		
+		//$view->createPreview(10);
 
+		break;
+}
+	$view->run();*/
 
     switch ($GET['mod'])
     {
         case 'add_advert':
-            include DK_ROOT . TEMPLATE .'tpl/board/unknown.tpl';
+            include TEMPLATE .'/board/unknown.tpl';
             break;
 
         case 'add_advert_free': // Добавления нового объявления FREE
 
 
+	
 
 // Запись нового обьявления по нажатию на кнопку
    if($ok)
    {
+
+   //	echo $POST['captcha'];
+
        // Если пользователь залогинен берем его ID
     if(isset($_SESSION['userdata']))
     {
@@ -63,15 +81,18 @@ $adv = new Board_Model('advert', $GET['num'], $GET['city'], $city_id);
         {   // Достаем ID гостя из БД по куке
             $id_user = Look::getGuestHash($_COOKIE['guest']);
         }
-        if(!$id_user)
+       
+    }
+     if(!$id_user)
         {
            // Если нет ID то записываем как нового гостя и создаем ему куку
             $id_user = Look::insertNewGuest($POST['value8']);
         }
-    }
+        // Если есть фото
     if(isset($POST['array1']))
-    {
+    {	// отсееваем пистые значения масмва с картинками
     	 $POST['array1'] = array_filter($POST['array1']);
+    	 // Приоразуем массив в страку
          $img = implode("|", $POST['array1']);
        
     }
@@ -88,18 +109,20 @@ $adv = new Board_Model('advert', $GET['num'], $GET['city'], $city_id);
                                      $POST['value7'], //phone
                                      $POST['value8'], //email
                                      $id_user,         //author,
-                                     $img
+                                     $img,
+                                     $POST['captcha']
                                      )
                      )
                       reDirect('page=board') ;
 
     }
+    
 
 
 
    }
 
-        include DK_ROOT . TEMPLATE .'tpl/board/add_form.tpl';
+        include TEMPLATE .'/board/add_form.tpl';
 
         break;
 
@@ -125,12 +148,12 @@ $adv = new Board_Model('advert', $GET['num'], $GET['city'], $city_id);
         $page_menu_vip = $adv->menu;
         $adv_count_vip = $adv->count;
         // Вывод FREE
-        $adv->createPreview(6);
+        $adv->createPreview(10);
         $free_rows = $adv->createRows('board/free_row', 'advert');
         $page_menu_free = $adv->menu;
         $adv_count_free = $adv->count;
 
-        include DK_ROOT . TEMPLATE .'tpl/board/show.tpl';
+        include TEMPLATE .'/board/show.tpl';
 
         break;
 
@@ -146,27 +169,36 @@ $adv = new Board_Model('advert', $GET['num'], $GET['city'], $city_id);
         $page_menu = $adv->menu;
         $adv_count = $adv->count;
 
-         include DK_ROOT . TEMPLATE .'tpl/board/show.tpl';
+         include TEMPLATE .'/board/show.tpl';
         break;
 
     case 'advert':
-$adv->clear = TRUE;
-         $info[] = $adv->creareFull($GET['parent']);
-        $rows = $adv->createRows('board/full', 'board');
-       // print_r($info);
+			//$adv->clear = TRUE;
+         	$info[] = $adv->creareFull($GET['parent']);
 
-        include DK_ROOT . TEMPLATE .'tpl/board/advert.tpl';
+        	$rows = $adv->createRows('board/full', 'board');
+
+        	$author = $adv->author;
+        	$add_time = $adv->add_time;
+        	$id_adv = $adv->id_adv;
+        //	$user = new Users_Model();
+        //	$user->creareFull($author);
+        	$adv->createAuthor($author);
+        	$author_block = $adv->createRows('board/author', 'board');
+      //  print_r($author_block);
+
+        include TEMPLATE .'/board/advert.tpl';
         break;
 
 
     case 'test':
 
-		include DK_ROOT . TEMPLATE .'tpl/board/test.tpl';
+		include TEMPLATE .'/board/test.tpl';
 
         break;
 
     default:
-        include DK_ROOT . TEMPLATE .'tpl/board/show.tpl';
+        include TEMPLATE .'/board/show.tpl';
         break;
     }
 

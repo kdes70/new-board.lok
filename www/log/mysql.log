@@ -1,0 +1,14 @@
+2014-09-20 04:41:04  
+            Query:  
+            SELECT * FROM kd_advert
+                                WHERE `id_adv` = 113 AND `confirm` = '1' AND `id_city` = 20032
+            File: D:\WEB\OpenServer\domains\new-board.lok\www\models\board_model.php 
+            Line: 169
+
+2014-09-20 04:41:45  
+            Query:  
+            SELECT * FROM kd_advert
+                                WHERE `id_adv` = 113 AND `confirm` = '1' AND `id_city` = 20032
+            File: D:\WEB\OpenServer\domains\new-board.lok\www\models\board_model.php 
+            Line: 169
+

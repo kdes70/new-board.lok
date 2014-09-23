@@ -14,11 +14,11 @@
         private $res, $num;
         
     
-    public function __construct($table, $num, $id_user)
+    public function __construct()
     {
-        $this->table = $table;
-        $this->num = $num;
-        $this->id_user =(int) $id_user; 
+        $this->table = 'users';
+        $this->num = $GET['num'];
+        //$this->id_user =(int) $id_user; 
         
     }
     
@@ -54,8 +54,7 @@
     {   
        // $pag = new IRB_Paginator($this->num, $num_rows);
         
-        $this->res = mysqlQuery("SELECT *, (YEAR(CURRENT_DATE)-YEAR(`birthday`))-(RIGHT(CURRENT_DATE,5)<RIGHT(`birthday`,5)
-	   	                            ) AS `age` 
+        $this->res = mysqlQuery("SELECT *
 									FROM `".DK_DBPREFIX. $this->table."_setting` 
 	                                JOIN `".DK_DBPREFIX. $this->table."`                                   
 	                                ON `".DK_DBPREFIX. $this->table."_setting`.`id_parent`=`".DK_DBPREFIX. $this->table."`.`id` 
@@ -73,16 +72,13 @@
 * @param int $id user
 * @return array user_seting
 */
-     public function userFull()
+     public function createUser($id_user)
      {
-        $this->res = mysqlQuery("SELECT *,  (YEAR(CURRENT_DATE)-YEAR(`birthday`))-(RIGHT(CURRENT_DATE,5)<RIGHT(`birthday`,5)
-   	                            ) AS `age` 
-								FROM `".DK_DBPREFIX. $this->table."_setting` 
-                                JOIN `".DK_DBPREFIX. $this->table."`                                   
-                                ON `".DK_DBPREFIX. $this->table."_setting`.`id_parent`=`".DK_DBPREFIX. $this->table."`.`id` 
-                                WHERE `".DK_DBPREFIX. $this->table."`.`id`= ".$this->id_user.""
+        $res = mysqlQuery("SELECT `id_user`, `login`, `email`, `phone`, `city` FROM `".DK_DBPREFIX. $this->table."`
+        						WHERE `id_user`= ".$id_user
 								);
-                                
+        return$res;
+          //  $this->res[] = mysqli_fetch_assoc($res);
      }
  
 /**
@@ -126,6 +122,21 @@
         else 
             return NULL;
      
+    }
+
+    public function createEdit($id_user)
+    {
+    	$this->createFull($id_user);
+    	 return htmlChars($this->res[0]);
+    }
+
+    public function getMyBoard($id_user)
+    {
+    	$adv = new Board_Model('advert', $GET['num'], $GET['city']);
+
+    	$this->res = $adv->myUserDesk($id_user);
+
+    	return $this->res;
     }
 
          

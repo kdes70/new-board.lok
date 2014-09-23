@@ -268,7 +268,7 @@ $("#add_title").attr({ maxlength: maxchars});
 
 
 
-
-
+ 
+   
 
 });

@@ -15,6 +15,7 @@ class IRB_Tree
 
     public  $shift, $shift_cnt = 0, $max_nest;
     private $result = '';
+    public $sub_arr = 'parent_id';
     
 /**
 * Конструктор
@@ -82,7 +83,7 @@ class IRB_Tree
         $cnt = count($this->rows);
      
         for ($i = 0; $i < $cnt; ++$i)
-            $arr[$this->rows[$i]['id_parent']][] = $this->rows[$i];
+            $arr[$this->rows[$i][$this->sub_arr]][] = $this->rows[$i];
         
         return $arr;
     }

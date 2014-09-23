@@ -19,9 +19,12 @@
        exit(file_get_contents('../404.html'));
     }
 /////////////////////////////////////////////////////////
-    $board = new Admin_Board_model('bord', $GET['num'], $GET['id_city']);
+    $adv = new Admin_Board_model('advert', $GET['num'], false, false);
     
-    $board->getAllBoard();
-    $rows = $board->createRows('admin/board/myboard_row', 'full');
+    $adv->getAllAdvert(6);
+    $rows = $adv->createRows('admin/board/row_adv', 'full');
     $title = 'Все объявления';
-    include DK_ROOT .'/skins/tpl/admin/board/myboard_show.tpl';
+    $page_menu = $adv->menu;
+    $count_adv = $adv->count;
+
+    include DK_ROOT . TEMPLATE . '/tpl/admin/board/show.tpl';

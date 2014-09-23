@@ -10,13 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
 
-    <link type="text/css" rel="stylesheet" href="<?php echo TEMPLATE; ?>css/style.css" media="all" />
-    <link type="text/css" rel="stylesheet" href="<?php echo TEMPLATE; ?>css/menu.css" media="all" />
-     <link type="text/css" rel="stylesheet" href="<?php echo TEMPLATE; ?>css/mediaqueries.css" media="all" />
-    <link rel="stylesheet" href="<?php echo TEMPLATE; ?>css/font-awesome/css/font-awesome.css" >
+    <link type="text/css" rel="stylesheet" href="<?php echo STYLES; ?>css/style.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="<?php echo STYLES; ?>css/menu.css" media="all" />
+     <link type="text/css" rel="stylesheet" href="<?php echo STYLES; ?>css/mediaqueries.css" media="all" />
+    <link rel="stylesheet" href="<?php echo STYLES; ?>css/font-awesome/css/font-awesome.css" >
 
-     <script type="text/javascript" src="<?php echo TEMPLATE; ?>js/jquery-1.11.0.min.js"></script>
-     <script type="text/javascript" src="<?php echo TEMPLATE; ?>js/jquery.cookie.min.js"></script>
+     <script type="text/javascript" src="<?php echo STYLES; ?>js/jquery-1.11.0.min.js"></script>
+     <script type="text/javascript" src="<?php echo STYLES; ?>js/jquery.cookie.min.js"></script>
  
 
     <!--[if lt IE 9]>
@@ -26,20 +26,22 @@
     <!-- Load WysiBB JS and Theme -->
     <!-- <script src="http://cdn.wysibb.com/js/jquery.wysibb.min.js"></script>
     <link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" /> -->
-    <script src="<?php echo TEMPLATE; ?>wysibb/jquery.wysibb.min.js"></script>
-    <link rel="stylesheet" href="<?php echo TEMPLATE; ?>wysibb/theme/default/wbbtheme.css" />
-  <script src="<?php echo TEMPLATE; ?>wysibb/lang/ru.js"></script>
+    <script src="<?php echo STYLES; ?>wysibb/jquery.wysibb.min.js"></script>
+    <link rel="stylesheet" href="<?php echo STYLES; ?>wysibb/theme/default/wbbtheme.css" />
+  <script src="<?php echo STYLES; ?>wysibb/lang/ru.js"></script>
 
-<script type="text/javascript" src="<?php echo TEMPLATE; ?>js/tooltip.js"></script>
+<script type="text/javascript" src="<?php echo STYLES; ?>js/tooltip.js"></script>
 
-  <script type="text/javascript" src="<?php echo TEMPLATE; ?>mess/main/javascript/jquery.toastmessage.js"></script>
-  <link rel="stylesheet" href="<?php echo TEMPLATE; ?>mess/main/resources/css/jquery.toastmessage.css">
+  <script type="text/javascript" src="<?php echo STYLES; ?>mess/main/javascript/jquery.toastmessage.js"></script>
+  <link rel="stylesheet" href="<?php echo STYLES; ?>mess/main/resources/css/jquery.toastmessage.css">
 
 
-    <script type="text/javascript" src="<?php echo TEMPLATE; ?>js/script.js"></script>
+    <script type="text/javascript" src="<?php echo STYLES; ?>js/script.js"></script>
 
     <title>Шаблон доски</title>
-
+    <meta name="keywords" content="<?php echo $keywords; ?>">
+    <meta name="description" content="<?php echo $description; ?>">
+          
 </head>
 <body>
     <div id="wrapper">
@@ -74,7 +76,7 @@
                        <li><a href="#">Level 3 Menu</a></li>
                    </ul>
               </li>
-              <li><a  href="#"><i class="icon-bullhorn"></i>BLOG</a></li>
+              <li><a  href="<?php echo href('page=blog') ?>"><i class="icon-bullhorn"></i>BLOG</a></li>
               <li><a  href="#"><i class="icon-envelope-alt"></i>&#9776 CONTACT</a></li>
               </ul>
 

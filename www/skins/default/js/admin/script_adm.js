@@ -20,4 +20,8 @@ $(document).ready(function() {
 		}
 		//$(this).next().slideToggle(400);
 	});
+
+
+
+	 $("#adv_list").tablesorter();
 });

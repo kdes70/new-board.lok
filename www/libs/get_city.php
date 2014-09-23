@@ -25,6 +25,8 @@
 /**
 *
 */
+//include_once DK_ROOT .'/libs/geo.php';
+
  class GeoCity extends Geo
 {
     protected $region; // указываем ID регеона

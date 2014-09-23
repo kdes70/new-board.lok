@@ -24,4 +24,4 @@
     $category = $cat->getCategory();
 
   //  print_arr($category);
-  include DK_ROOT . TEMPLATE . 'tpl/left.tpl';
+  include TEMPLATE . 'left.tpl';

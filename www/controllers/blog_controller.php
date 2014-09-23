@@ -17,7 +17,46 @@
     }
 //////////////////////////////////////////////////////// 
    
-    $blog = new Blog_Model('blog', $GET['num']);
+
+$view = new Blog_View('blog', 'blog/blog', $GET['num']);
+
+
+    if($GET['mod'] === 'full')
+        $view->actionFull($GET['parent']);
+    else
+        $view->actionАll();
+
+    $view->run();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*    $blog = new Blog_Model('blog', $GET['num']);
 
     if($GET['mod'] === 'full')
     {    
@@ -72,6 +111,6 @@
     
     
     include DK_ROOT .'/skins/tpl/blog/show.tpl';
-    
+    */
 
     

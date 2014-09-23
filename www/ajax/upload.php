@@ -17,7 +17,7 @@
     //$info = array();
     //$files = array();
     $max_size = DK_CONFIG_MAX_SIZE_IMG; // Мак. размер файла 1024*50
-    $name = 'diboard-img';        // Имя большой картинки
+    $name = 'diboard-img'.$_POST['date'];        // Имя большой картинки
 
      include DK_ROOT .'/libs/class.upload.php';
    // $smoll_name = 
@@ -37,10 +37,10 @@
                 $handle->file_new_name_body = $name;
                 # конвертим в jpg
                 $handle->image_convert      = 'jpg';
-                $handle->jpeg_quality       = 80;
+                $handle->jpeg_quality       = 90;
                 $handle->image_resize        = true;
-                $handle->image_x             = 500;
-                $handle->image_y             = 500;
+                $handle->image_x             = 600;
+                $handle->image_y             = 600;
                 $handle->image_ratio         = true;
              // $handle->image_resize       = true;
                 //$handle->image_x            = 600;
@@ -65,8 +65,8 @@
                 $handle->jpeg_quality       = 80;
                 $handle->image_resize       = true;
                 $handle->image_ratio_crop   = true;
-                $handle->image_y            = 140;
-                $handle->image_x            = 140;
+                $handle->image_y            = 145;
+                $handle->image_x            = 145;
 
     $handle->Process($dir_dest1);// обрезаем превью
 

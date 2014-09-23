@@ -18,6 +18,8 @@
 
 	 <script type="text/javascript" src="<?php echo TEMPLATE; ?>js/jquery-1.11.0.min.js"></script>
 	 <script type="text/javascript" src="<?php echo TEMPLATE; ?>js/jquery.cookie.min.js"></script>
+
+	  <script type="text/javascript" src="<?php echo TEMPLATE; ?>js/admin/jquery.tablesorter.js"></script>
 	<!-- адаптивное меню -->
 	
 	<!--[if lt IE 9]>
@@ -49,8 +51,8 @@
 
 <?php if(isset($_SESSION['admin'])): ?>
 	<!-- content start -->
-	<?php  include DK_ROOT . TEMPLATE . '/tpl/top_menu.tpl'; ?>
-	  <?php echo $content; ?> 
+	<?php  include DK_ROOT . TEMPLATE . '/tpl/admin/content.tpl'; ?>
+	 
 	  <!-- content end -->
 <?php else: ?>
 

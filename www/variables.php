@@ -100,6 +100,7 @@
                     'value10' =>  '',
                     'array1'  => array(),
                     'array2'  => array(),
+                    'captcha' => '',
                   );
 
     if(!empty($_POST['form']))

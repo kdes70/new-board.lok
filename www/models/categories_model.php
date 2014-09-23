@@ -40,13 +40,13 @@ class Categories_Model
 */
 public function getCategory()
 {
-    $res = mysqlQuery("SELECT *
+    $this->res = mysqlQuery("SELECT *
                         FROM `". DK_DBPREFIX . $this->table ."`
                         ORDER BY `parent_id`, `name` "
                         );
     //Массив категорий
     $cat = array();
-    while ($row = mysqli_fetch_assoc($res)) {
+    while ($row = mysqli_fetch_assoc($this->res)) {
         if(!$row['parent_id'])
         {
             $cat[$row['id_cat']][] = $row['name'];
@@ -57,6 +57,37 @@ public function getCategory()
     return $cat;
 }
 
+	private function _listCategory()
+	{
+		$this->res = mysqlQuery("SELECT *
+		                    FROM `". DK_DBPREFIX . $this->table ."`
+		                    ORDER BY `id_cat` "
+		                    );
+		$rows = '';
+		if($this->res)
+		{
+			while ($row = mysqli_fetch_assoc($this->res)) {
+			 	$rows[] = $row;
+			 }
+		}
+		return $rows;
+	}
+
+	public function createCategory($tpl)
+	{
+		
+	   $rows = $this->getCategory();        
+
+	          
+	       
+	       $cont = getTpl($tpl);
+	      
+	       $view = parseTpl($cont, $rows);
+	       
+	            
+	  // print_r($rows);
+	   return $view;
+	}
 
 
 }

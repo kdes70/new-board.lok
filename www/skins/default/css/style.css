@@ -15,7 +15,7 @@ a { text-decoration: none; color: #323232 }
 }
 
 /* = Убираем рамку для изображений */
-img { border: none; max-width: 100%; height: auto; }
+img { border: none; height: auto; }
 
 article, aside, figure, footer, header, hgroup, nav, section {display: block;}
 
@@ -51,6 +51,10 @@ body{
 .smoll_font{
 	font-size: 14px;
 	font-weight: 600;
+}
+
+time.timeago {
+font-weight: 800;
 }
 
 div.error {
@@ -234,9 +238,8 @@ input#autch{
 	text-align: left;
 	padding: 5px;
 	padding-bottom: 0px;
+	font-size: 12px;
 	font-weight: 400;
-	font-size: 15px;
-	line-height: 16px;
 }
 
 
@@ -316,13 +319,14 @@ input#autch{
 }
 
 .free_post{
-	max-width: 155.3px;
 	/* width: 32.2%; */
-	height: 250px;
+	height: 230px;
 	margin: 0.800%;
 	float: left;
 	background-color: #eeeeee;
 	border: 1px solid #DBDBDB;
+	width: 32.2%;
+	max-width: 141.3px;
 }
 .vip_post a{
 	width: 100%;
@@ -334,7 +338,7 @@ input#autch{
 #main_block{
 	width: 100%;
 	min-height: 800px;
-	outline: 1px solid red;
+	background-color: #FDFDFD;
 }
 
 /*===============FULL-POST=================*/
@@ -404,12 +408,16 @@ input#autch{
 #main_block form p{
 	padding: 10px;
 }
+input:focus,
+select:focus{
+	border: 1px solid rgb(81, 159, 245);
+}
 input#add_title{
 	width: 500px;
 	height: 40px;
 	font-size: 20px;
 	color: #3E4156;
-	padding: 3px;
+	padding: 5px;
 }
 input#add_price{
 	width: 370px;
@@ -429,24 +437,19 @@ input#add_price{
 	margin-top: 10px;
 }
 #block-captcha {
-margin-top: 40px;
+margin-top: 30px;
 }
 #block-captcha img {
 float: left;
 }
 #block-captcha > input#reg-captcha {
-height: 30px;
-width: 100px;
-font: 19px sans-serif;
+height: 45px;
+width: 110px;
+font: 30px sans-serif;
 margin: 0 15px;
 float: left;
 padding-left: 5px;
-margin-top: 8px;
-color: black;
-border-left: 1px solid #ababab;
-border-top: 1px solid #ababab;
-border-right: 1px solid #dddddd;
-border-bottom: 1px solid #dddddd;
+color: rgb(134, 134, 136);
 }
 button.sub_add{
 	width: 160px;
@@ -461,18 +464,18 @@ button.sub_add{
 	background-color: #029BDC;
 	cursor: pointer;
 }
+button.sub_add[disabled]{ background-color: rgb(99, 184, 231);
+}
 
 /*---- ДОБАВЛЕНИЕ ФОТО ----*/
 #images_block{
-	height: 163px;
-	width: 755px;
-	padding: 8px 0;
+	height: 166px;
+	width: 795px;
 	position: absolute;
-	top: 800px;
-	left: 278px;
 	/* margin: 10px auto; */
-	background-color: #EDEDED;
-	border: 3px solid #ccc;
+	background-color: #F1F1F1;
+	padding: 8px 0;
+	top: 800px;
 }
 .upload:hover{
 	background-color: #b6b6b6;
@@ -486,13 +489,13 @@ button.sub_add{
 }
 .add_photo{
 	position: relative;
-	width: 140px;
 	float: left;
 	margin-left: 8px;
-	height: 140px;
+	height: 149px;
 	text-align: center;
 	border: 2px solid #ccc;
 	background-color: #fff;
+	width: 149px;
 }
 .upload form{
 	padding: 0;
@@ -501,7 +504,7 @@ button.sub_add{
 input.upload_photo{
 	display: block !important;
 	width: 100% !important;
-	height: 135px !important;
+	height: 145px !important;
 	cursor: pointer;
 	opacity: 0 !important;
 	overflow: hidden !important;
@@ -511,8 +514,8 @@ input.upload_photo{
 	font-size: 100px;
 	color: #e6e6e6;
 	position: absolute;
-	top: 0px;
-	left: 27px;
+	top: 5px;
+	left: 33px;
 }
 span#text_count {
 float: right;
@@ -522,30 +525,31 @@ margin-top: 6px;
 /*=============== ADD BLOCK END ===============*/
 
 /* Галерея продукта */
-.item_gallery{
-   padding: 10px 0 20px;
-   margin-bottom: 25px;
+.item_gallery{ padding: 10px; margin-bottom: 25px; height: 500px; width: 100%;
 }
 .item_img{
    position: relative;
    text-align: center;
-   height: 300px;
    background: url(../images/ajax-loader.gif) no-repeat center 49%;
+   float: left;
+   width: 85%;
 }
 
 .item_img img{
+   width: 650px;
    max-width: 650px;
 }
-.item_thumbs{
-   margin-top: 50px;
+.item_thumbs{ width: 110px; padding: 5px; background: #F1F1F1; float: right;
 }
 .item_thumbs a{
-   margin: 0 10px 10px 0;
 }
 .item_thumbs img{
-   width: 45px;
+   width: 100px;
    padding: 4px;
-   border: 2px solid #B2B2B2;
+   opacity: 0.6;
+}
+.item_thumbs img:hover{
+	opacity: 1;
 }
 .item_thumbs a:hover img,
 .item_thumbs a.active img{
@@ -660,6 +664,11 @@ background: #ccc;
 }
 #block_city ul li a:hover{
 	color: #00ACC5;
+}
+
+
+#office_block{
+	outline: 1px solid red;
 }
 /*-----------------------------------------------------------------------------------------------*/
 /*                                            TOOLTIP                                            */

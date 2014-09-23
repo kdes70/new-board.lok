@@ -74,7 +74,7 @@
 
     $value1 = htmlChars($POST['value1']);
 
-    include DK_ROOT . TEMPLATE .'/skins/tpl/registration/form_activate.tpl';
+  //  include DK_ROOT . TEMPLATE .'/skins/tpl/registration/form_activate.tpl';
 
 
 

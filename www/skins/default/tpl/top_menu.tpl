@@ -37,9 +37,9 @@
 	<aside id="left_block">
 		<nav>
 			<ul>
-				<li class="listnav"><a href=""><i class="fa fa-anchor"></i> Пункт списка1</a><span>100</span></li>
+				<li class="listnav"><a href="#"><i class="fa fa-anchor"></i>Объявления</a><span>100</span></li>
 					<ul class="nav_sub">
-						<li><a href="">Под пункт1</a></li>
+						<li><a href="<?php echo href('page=board', 'mod=read'); ?>">Все объявления</a></li>
 						<li><a href="">Под пункт2</a></li>
 						<li><a href="">Под пункт3</a></li>
 						<li><a href="">Под пункт4</a></li>
@@ -76,15 +76,56 @@
 					</tr>
 				</thead>
 				<tbody>
+					<?php echo $rows; ?>
 					<tr>
 						<th>12345</th>
-						<td><img src="acdfvsdfds" alt=""></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td><img src="acdfvsdfds" alt="" height="90px" width="90px"></td>
+						<td>Заголовок объявления</td>
+						<td>Мебель для дома</td>
+						<td>Томск</td>
+						<td>Иванов</td>
+						<td>12-17(23:34)</td>
+						<td>Куплю</td>
+					</tr>
+					<tr>
+						<th>12345</th>
+						<td><img src="acdfvsdfds" alt="" height="90px" width="90px"></td>
+						<td>Заголовок объявления</td>
+						<td>Мебель для дома</td>
+						<td>Томск</td>
+						<td>Иванов</td>
+						<td>12-17(23:34)</td>
+						<td>Куплю</td>
+					</tr>
+					<tr>
+						<th>12345</th>
+						<td><img src="acdfvsdfds" alt="" height="90px" width="90px"></td>
+						<td>Заголовок объявления</td>
+						<td>Мебель для дома</td>
+						<td>Томск</td>
+						<td>Иванов</td>
+						<td>12-17(23:34)</td>
+						<td>Куплю</td>
+					</tr>
+					<tr>
+						<th>12345</th>
+						<td><img src="acdfvsdfds" alt="" height="90px" width="90px"></td>
+						<td>Заголовок объявления</td>
+						<td>Мебель для дома</td>
+						<td>Томск</td>
+						<td>Иванов</td>
+						<td>12-17(23:34)</td>
+						<td>Куплю</td>
+					</tr>
+					<tr>
+						<th>12345</th>
+						<td><img src="acdfvsdfds" alt="" height="90px" width="90px"></td>
+						<td>Заголовок объявления</td>
+						<td>Мебель для дома</td>
+						<td>Томск</td>
+						<td>Иванов</td>
+						<td>12-17(23:34)</td>
+						<td>Куплю</td>
 					</tr>
 				</tbody>
 				<tfoot>

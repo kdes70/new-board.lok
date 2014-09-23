@@ -8,7 +8,7 @@
                 <form id="add_adv"  method="POST" enctype="multipart/form-data">
                 <p>
                 <label for="add_title"><span>*</span>Ведите загаловок:</label>
-                    <input type="text" maxlength="30" name="form[value1]" id="add_title" value="<?=$_SESSION['add_adv']['title']; ?>" required>
+                    <input type="text" maxlength="30" name="form[value1]" id="add_title" value="<?=$_SESSION['add_adv']['title']; ?>" >
                     <span id="text_count">30</span>
                 </p>
                 <hr>
@@ -90,27 +90,30 @@
          <div class="fl_left">
             <p>
                 <label for=""><span>*</span>Телефон</label>
-                <input type="tel" required name="form[value7]" id="add_price" maxlength="11"  onkeyup="this.value = this.value.replace (/\D/, '')"
-                pattern"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" value="<?php echo $_SESSION['userdata']['phone']; ?>">
+                <input type="tel"  name="form[value7]" id="add_price" maxlength="11"  onkeyup="this.value = this.value.replace (/\D/, '')"
+                pattern"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" placeholder="8-952-803-3446" value="<?php echo $_SESSION['userdata']['phone']; ?>">
             </p>
          </div>
          <div class="fl_right">
          <?php if(!isset($_SESSION['userdata'])): ?>
             <p>
                 <label for=""><span>*</span>Email <span class="toolTip" title="Заполните поле Email для добавления объявления не зарегистрированных пользователей">&nbsp;</span></label>
-                <input type="email" required name="form[value8]" id="add_price" value="<?php echo $_SESSION['userdata']['email']; ?>"  ><span class="tooltip"></span>
+                <input type="email"  name="form[value8]" id="add_price" value="<?php echo $_SESSION['userdata']['email']; ?>"  ><span class="tooltip"></span>
             </p>
         <?php endif; ?>
          </div>
 
 
     <br/>
+    <p><label for="rules">С <a href="#">правилами сайта</a> ознакомлен и полнастью с ними согласен</label>
+	<input type="checkbox" id="rules" name="form[value9]" value="1" >
+    </p>
     <div class="clear"></div>
     <div class="fl_left">
 <div id="block-captcha">
 
 <img src="<?php echo DK_HOST; ?>components/captcha/reg_captcha.php" />
-<input type="text"required name="reg_captcha" id="reg-captcha"  />
+<input type="text"  name="form[captcha]" id="reg-captcha"  />
 
 <p id="reloadcaptcha"><i class="fa fa-refresh"></i></p>
 </div>
@@ -120,6 +123,23 @@
     <button class="sub_add" type="submit" name="ok" value="ok"><i class="fa fa-plus"></i> ДОБАВИТЬ</button>
 </p>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -146,7 +166,7 @@
 		<div class="upload">
 			
 			<form id="upload_photo_1" method="post" enctype="multipart/form-data" action="/ajax/upload.php" target="frame_photo_1">
-				<input type="hidden" name="date" value="29-07-14" />
+				<input type="hidden" name="date" value="<?php echo time(); ?>" />
 				<input id="input_upload_photo_1" accept="image/*" class="upload_photo" type="file" name="upload"/>
 
 			</form>
@@ -161,7 +181,7 @@
 		<div class="upload">
 			<iframe style="display: none;" id="frame_photo_2" name="frame_photo_2"></iframe>
 			<form id="upload_photo_2" method="post" enctype="multipart/form-data" action="/ajax/upload.php" target="frame_photo_2">
-				<input type="hidden" name="date" value="29-07-14" />
+				<input type="hidden" name="date" value="<?php echo time(); ?>" />
 			<input id="input_upload_photo_2" accept="image/*" class="upload_photo" type="file" name="upload"/>
 			</form>
 		</div>  
@@ -174,7 +194,7 @@
 		<div class="upload">
 			<iframe style="display: none;" id="frame_photo_3" name="frame_photo_3"></iframe>
 			<form id="upload_photo_3" method="post" enctype="multipart/form-data" action="/ajax/upload.php" target="frame_photo_3">
-				<input type="hidden" name="date" value="29-07-14" />
+				<input type="hidden" name="date" value="<?php echo time(); ?>" />
 			<input id="input_upload_photo_3" accept="image/*" class="upload_photo" type="file" name="upload"/>
 			</form>
 		</div>  
@@ -187,7 +207,7 @@
 		<div class="upload">
 			<iframe style="display: none;" id="frame_photo_4" name="frame_photo_4"></iframe>
 			<form id="upload_photo_4" method="post" enctype="multipart/form-data" action="/ajax/upload.php" target="frame_photo_4">
-				<input type="hidden" name="date" value="29-07-14" />
+				<input type="hidden" name="date" value="<?php echo time(); ?>" />
 			<input id="input_upload_photo_4" accept="image/*" class="upload_photo" type="file" name="upload"/>
 			</form>
 		</div>  
@@ -200,7 +220,7 @@
 		<div class="upload">
 			<iframe style="display: none;" id="frame_photo_5" name="frame_photo_5"></iframe>
 			<form id="upload_photo_5" method="post" enctype="multipart/form-data" action="/ajax/upload.php" target="frame_photo_5">
-				<input type="hidden" name="date" value="29-07-14" />
+				<input type="hidden" name="date" value="<?php echo time(); ?>" />
 			<input id="input_upload_photo_5" accept="image/*" class="upload_photo" type="file" name="upload"/>
 			</form>
 		</div>  
@@ -210,17 +230,8 @@
 </div>
 
             </div>
-<?php echo dbg($_POST); ?>
-<?php echo dbg($POST); ?>
-<?php echo dbg($_SESSION); ?>
-<?php echo dbg($_FILES); ?>
         </section>
   
-
-
-
-
-
 
 <script>
     $(document).ready(function() {
@@ -288,7 +299,30 @@ $("#upload_photo_"+id).submit();
            });
 
 });
-				
+
+
+ // Если отметели чекбокс с правилами делаем кнопку отправки формы активной
+
+ $('.sub_add').prop('disabled', true);
+  $('#rules').change(function() {
+      state = $(this).prop('checked');
+      //alert(state);
+      if(state) {
+          $('.sub_add').prop('disabled', false);
+      }
+      else {
+          $('.sub_add').prop('disabled', true);
+      }
+  });
+
+
+
+//Обновление капчи
+
+$("#reloadcaptcha").click(function() {
+	$("#block-captcha > img").attr("src", "<?php echo DK_HOST; ?>components/captcha/reg_captcha.php?r="+ Math.random());
+	
+});
 
     }); 
     </script>

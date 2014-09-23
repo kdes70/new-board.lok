@@ -37,17 +37,21 @@
 /**
 * Подключаем файлы ядра
 */
+	// Фаилы ядра
     include './config.php';
     include DK_ROOT .'/variables.php';
     include DK_ROOT .'/language/ru.php';
+    // Потключение БД MYSQL
     include DK_ROOT .'/libs/mysql.php';
     include DK_ROOT .'/libs/default.php';
     include DK_ROOT .'/libs/view.php';
+    // Geo-location
     include DK_ROOT .'/libs/get_city.php';
-        include DK_ROOT .'/libs/Protect_model.php';
-        include DK_ROOT .'/libs/validation_class.php';
+    // Конвертация BBcoda
+    include DK_ROOT .'/libs/Protect_model.php';
+     
 
-       // $oo = new Validation();
+      
 
 
 	//include DK_ROOT .'/libs/online.php';
@@ -110,12 +114,8 @@ $region = 1672;//Томская область
     case 'registration' :
       include DK_ROOT .'/controllers/left_sitebar_controller.php';
         include DK_ROOT .'/components/registration/router.php';
-       /* if($GET['mod'] === 'registration' && !$ok)
-        {
-          exit();
-        }*/
-
-       // include DK_ROOT .'/components/registration/router.php';
+     
+ 
 
     break;
 
@@ -130,7 +130,7 @@ $region = 1672;//Томская область
         case 'profile' :
 
 			include DK_ROOT .'/controllers/left_sitebar_controller.php';
-            include DK_ROOT .'/controllers/right_bar_controller.php';
+         //   include DK_ROOT .'/controllers/right_bar_controller.php';
             include DK_ROOT .'/controllers/profile_controller.php';
 
         break;
@@ -162,14 +162,14 @@ $region = 1672;//Томская область
         case 'news' :
 
             include DK_ROOT .'/controllers/left_sitebar_controller.php';
-            include DK_ROOT .'/controllers/right_bar_controller.php';
-             include DK_ROOT .'/controllers/news_controller.php';
+            //include DK_ROOT .'/controllers/right_bar_controller.php';
+            include DK_ROOT .'/controllers/news_controller.php';
 
         break;
 
         case 'blog' :
             include DK_ROOT .'/controllers/left_sitebar_controller.php';
-            include DK_ROOT .'/controllers/right_bar_controller.php';
+         //   include DK_ROOT .'/controllers/right_bar_controller.php';
              include DK_ROOT .'/controllers/blog_controller.php';
 
         break;
@@ -223,7 +223,7 @@ $region = 1672;//Томская область
 /**
 * Подключаем главный шаблон
 */
-    include DK_ROOT . TEMPLATE . 'tpl/index.tpl';
+    include TEMPLATE . 'index.tpl';
 
 
 

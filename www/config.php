@@ -40,7 +40,7 @@
  /**
 * Активация аккаунта по письму
 */
-   define('DK_REGISTRATION_ACTIVATE', 'on');
+   define('DK_REGISTRATION_ACTIVATE', 'off');
 
 /**
 * Количество рядов в постраничном режиме
@@ -99,13 +99,16 @@
 /**
  * Устанавливаем путь к виду
  */
-  define('VIEW', '/skins/');
+  define('SKINS', 'default');
 
 /**
 * Устанавлаваем активный шаблон
 */
-  define('TEMPLATE', VIEW . 'default/');
+ 
 
+define('STYLES', '/skins/'.SKINS.'/');
+
+ define('TEMPLATE', DK_ROOT.STYLES.'tpl/');
 
 /**
 * Путь для автолоада моделей
@@ -113,6 +116,7 @@
      $INCLUDE_PATCH = array(
                             'libs',
                             'models',
+                            'views',
                             'components/registration',
                             'ajax/'
                            // 'components/captcha/'

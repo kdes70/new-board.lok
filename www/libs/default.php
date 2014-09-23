@@ -40,76 +40,81 @@ function checkValue($value)
    }
 
 
-/**
-* Функция формирования GET-параметров
-*/
-    function href()
-    {
-        global $GET;
-        $tmp = $GET;
-        $href = '';
-        $host = DK_HOST;
-
-        $arg = func_get_args();
-
-        if(defined('DK_ADMIN'))
-            $host .= 'admin/';
-
-        if($arg[0] == 'host')
-            return DK_HOST;
-
-        if(is_array($arg[0]))
-            $arg = $arg[0];
-
-        foreach($arg as $var)
-        {
-            $param = explode('=', $var);
-
-            if(array_key_exists($param[0], $tmp))
-                $tmp[$param[0]] = $param[1];
-            else
-                die('The variable <b>'. $param[0] .'</b> is not defined');
-        }
-
+/**   
+* Функция формирования GET-параметров  
+*/   
+    function href()   
+    {   
+        global $GET;     // Объявляем массив $GET, сформированный ранее, глобальным 
+        $tmp = $GET;     //Переписываем переменную, что бы не влиять на глобальный массив 
+        $href = '';  
+        $host = DK_HOST;  
+        // Получаем массив аргументов переданных в функцию  href(тут_вот)
+        $arg = func_get_args();  
+        // Задел на будущее - ссылки для админки
+        if(defined('KD_ADMIN'))              
+            $host .= '/admin'; 
+        // Ссылка на корень сайта 
+        if($arg[0] == 'host')  
+            return DK_HOST; 
+        // Если аргумент - массив, берем первый элемент.    
+        if(is_array($arg[0]))  
+            $arg = $arg[0];            
+        // Перебираем полученные аргументы
+        foreach($arg as $var)       
+        {   
+            $param = explode('=', $var); // Разделяем имя переменной и значение (page=gallery, например)   
+            // Если в массиве $GET ($tmp) есть ключ, полученный выше (в данном случае 'page')   
+            if(array_key_exists($param[0], $tmp))   
+                $tmp[$param[0]] = $param[1]; // То этому ключу присваиваем полученное значение    
+             else   // Иначе выдаем ошибку, что такая переменная не зарегистрирована
+                 die('The variable <b>'. $param[0] .'</b> is not defined');     
+        }   
+        // обрезаем те параметры, которые не передавались в аргумент    
         $cnt = array_flip(array_keys($tmp));
-        $tmp = array_slice($tmp, 0, $cnt[$param[0]] + 1);
-
-        foreach($tmp as $var => $val)
-            if(DK_REWRITE === 'on')
-                $href .= '/'. $val;
-            elseif(!empty($val))
-                $href .= '&'. $var .'='. $val;
-
-        if(DK_REWRITE === 'on')
-            return $host . hrefTrim($href);
-        else
-            return $host .'?'. trim($href, '&');
+        $tmp = array_slice($tmp, 0, $cnt[$param[0]] + 1);  
+        // Теперь поочередно вставляем значения из $GET ($tmp) в ссылку
+        foreach($tmp as $var => $val)    
+            if(DK_REWRITE === 'on')    
+              $href .= '/'. $val; // Если реврайт включен, через слэш
+            elseif(!empty($val))   
+              $href .= '&'. $var .'='. $val;  // Если нет - обычные GET параметры 
+        // Обрезаем пустоту скраю, чтобы было красивее
+        if(DK_REWRITE === 'on')   
+            return $host . hrefTrim($href); // Обычная функция trim() не подходит, пользуем свою 
+        else   
+            return $host .'?'. trim($href, '&');          
     }
-
-/**
-* Адаптированная обертка функции trim()
-*/
+/**   
+* Адаптированный аналог функции trim() 
+*/   
     function hrefTrim($link)
     {
-        return preg_replace('#(/0)+$#', '', ltrim($link, '/'));
-    }
-
-
+        return preg_replace('#(/0)+$#', '',  $link);
+    } 
+    
 /**
-* Автозагрузка классов
-*/
+* Автозагрузка классов      
+*/      
     function __autoload($classname)
     {
         global $INCLUDE_PATCH;
-
+        
         foreach ($INCLUDE_PATCH as $include_path)
         {
-            $class = DK_ROOT .'/'. $include_path .'/'. strtolower($classname) .'.php';
-
-            if(file_exists($class))
+            $files[] = DK_ROOT .'/'. str_replace(array('_', "\0"),
+                                                  array('/', ''), 
+                                                  $classname).'.php';
+            $files[] = DK_ROOT .'/'. $include_path .'/'. strtolower($classname) .'.php';
+            $files[] = DK_ROOT .'/'. $include_path .'/'. strtolower($classname) .'.class.php';
+            
+            foreach($files as $file)
             {
-                include_once $class;
-                break;
+                if(file_exists($file))
+                {
+                    include_once $file;
+                    break 2;
+                }
             }
         }
     }

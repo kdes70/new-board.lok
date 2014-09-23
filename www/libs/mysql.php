@@ -84,7 +84,7 @@ class DB
            die($error_log); 
 //-----------------------------  
  
-            file_put_contents(DK_ROOT .'log/mysql.log', strip_tags($error_log) ."\n\n", FILE_APPEND); 
+            file_put_contents(DK_ROOT .'/log/mysql.log', strip_tags($error_log) ."\n\n", FILE_APPEND); 
             header("HTTP/1.1 404 Not Found"); 
             die(file_get_contents(DK_ROOT .'/404.html')); 
         } 
